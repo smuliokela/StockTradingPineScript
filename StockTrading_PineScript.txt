@@ -1,3 +1,4 @@
+//Stephen Muliokela
 //@version=6
 indicator("Unified MTF Tech Rating, QuantScore & Indicator Dashboard", shorttitle="Unified Quant Dashboard", overlay=true, max_labels_count=500, max_lines_count=500)
 
@@ -7,7 +8,7 @@ indicator("Unified MTF Tech Rating, QuantScore & Indicator Dashboard", shorttitl
 group_dash      = "Dashboard Layout & Column Display Controls"
 dash_loc        = input.string("Top Right", "Dashboard Location", options=["Top Right", "Top Left", "Bottom Right", "Bottom Left"], group=group_dash)
 dash_size       = input.string("Large", "Dashboard Text Size", options=["Small", "Medium", "Large", "Huge"], group=group_dash)
-compact_mode    = input.bool(false, "⚡ Compact Mode (Hide All Sub-Metrics)", group=group_dash)
+compact_mode    = input.bool(false, " Compact Mode (Hide All Sub-Metrics)", group=group_dash)
 
 // Individual Column Display Switches
 show_col_tr     = input.bool(true, "Show Trend Column", group=group_dash)
@@ -1133,7 +1134,7 @@ if barstate.islast
         table.merge_cells(dash, start_3tf, 11, start_3tf + 4, 11)
         f_add_cell(dash, start_3tf, 11, "SIDE-BY-SIDE CLUSTER ALIGNMENT METRICS", color.rgb(33, 33, 33), color.white)
 
-        string align_panel_msg = multi_cluster_aligned ? "🔥 ALIGNMENT DETECTED: " + str.tostring(max_consecutive) + " Clusters Side-By-Side" : "NO ALIGNMENT (< 3 Clusters Aligned: " + str.tostring(max_consecutive) + ")"
+        string align_panel_msg = multi_cluster_aligned ? " ALIGNMENT DETECTED: " + str.tostring(max_consecutive) + " Clusters Side-By-Side" : "NO ALIGNMENT (< 3 Clusters Aligned: " + str.tostring(max_consecutive) + ")"
         color align_panel_bg  = multi_cluster_aligned ? color.rgb(0, 150, 136) : color.rgb(66, 66, 66)
 
         table.merge_cells(dash, start_3tf, 12, start_3tf + 4, 12)
@@ -1160,7 +1161,7 @@ string adx_dir_alert_tf =
      adx_dir_bull_4h  ? "4H"  : ""
 
 //if adx_dir_bull_trigger
-//    alert("🔥 ADX/DI MOMENTUM ALERT: " + syminfo.ticker + " | " + adx_dir_alert_tf + "\nADX > 25 and rising\nDI+ rising\nDI- falling\nDI+ > DI-\nRSI > 70", alert.freq_once_per_bar)
+//    alert(" ADX/DI MOMENTUM ALERT: " + syminfo.ticker + " | " + adx_dir_alert_tf + "\nADX > 25 and rising\nDI+ rising\nDI- falling\nDI+ > DI-\nRSI > 70", alert.freq_once_per_bar)
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // ==========================================
@@ -1209,7 +1210,7 @@ string tf_arrow_alert_tf =
 //Turn off arrow trigger 
 
 //if tf_arrow_trigger
-//    alert("🚀 TF ARROW + ADX DIR ALERT: " + syminfo.ticker + " | " + tf_arrow_alert_tf + " TF ARROW ALIGNED + ADX DIR UP!", alert.freq_once_per_bar)
+//    alert(" TF ARROW + ADX DIR ALERT: " + syminfo.ticker + " | " + tf_arrow_alert_tf + " TF ARROW ALIGNED + ADX DIR UP!", alert.freq_once_per_bar)
 bool single_cluster_alert = alert_trigger and single_cluster_aligned
 bool quant_ma_score_alert = alert_trigger and (q_pct_avg_1m_to_1d > 87.0) and (avg_mascore_1m_to_1d > 85.0)
 
@@ -1264,12 +1265,12 @@ plotshape(
 // alertcondition(tori_bull_safety, title="Bullish Safety-Line Failure", message="Tori bullish safety-line failure")
 // alertcondition(tori_bear_safety, title="Bearish Safety-Line Failure", message="Tori bearish safety-line failure")
 //-->if tf_target_criteria_alert
-//-->    alert("🚀 Unified Quant Dashboard Alert: TF Target Criteria Met on " + syminfo.ticker, alert.freq_once_per_bar)
+//-->    alert(" Unified Quant Dashboard Alert: TF Target Criteria Met on " + syminfo.ticker, alert.freq_once_per_bar)
 
 //if tori_bull_break
- //   alert("📈 Tori Trendline Alert [Bullish Break]: " + syminfo.ticker + " @ 1H | Entry: " + str.tostring(close) + " | Time: " + str.tostring(time), alert.freq_once_per_bar)
+ //   alert(" Tori Trendline Alert [Bullish Break]: " + syminfo.ticker + " @ 1H | Entry: " + str.tostring(close) + " | Time: " + str.tostring(time), alert.freq_once_per_bar)
 //if tori_bear_break
- //   alert("📉 Tori Trendline Alert [Bearish Break]: " + syminfo.ticker + " @ 1H | Entry: " + str.tostring(close) + " | Time: " + str.tostring(time), alert.freq_once_per_bar)
+ //   alert(" Tori Trendline Alert [Bearish Break]: " + syminfo.ticker + " @ 1H | Entry: " + str.tostring(close) + " | Time: " + str.tostring(time), alert.freq_once_per_bar)
 
 //Alerts **********************************************************************************
 //TF Target Criteria → active alert
@@ -1307,4 +1308,4 @@ bool all_elite_buy_trigger =
 
 // Send alert
 if all_elite_buy_trigger
-    alert("🏆🔥 ALL ELITE BUY ALIGNMENT: " + syminfo.ticker + " | 1M to 4H ARE ALL ELITE BUY!", alert.freq_once_per_bar)
+    alert(" ALL ELITE BUY ALIGNMENT: " + syminfo.ticker + " | 1M to 4H ARE ALL ELITE BUY!", alert.freq_once_per_bar)
